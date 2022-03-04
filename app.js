@@ -2,7 +2,8 @@ const game = () => {
 let roundMessage = '';
 let playerScore = 0;
 let computerScore = 0;
-let playerSelection = 'scissors';
+let playerSelection = prompt('Please choose from Rock, Paper, and Scissors.');
+
 const compTurn = ['rock', 'paper', 'scissors'];
 
     const computerPlay = (compTurn) => {
