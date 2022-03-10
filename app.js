@@ -3,52 +3,56 @@ let roundMessage = '';
 let playerScore = 0;
 let computerScore = 0;
 let gameRound = 0;
-let playerSelection = '';
 //let playerSelection = prompt('Please choose from Rock, Paper, and Scissors.').toLowerCase();
+let playerSelection = '';
 
     const compTurn = ['rock', 'paper', 'scissors'];
 
+            // Computer play
             const computerPlay = (compTurn) => {
                 return compTurn[Math.floor(Math.random() * compTurn.length)];
             }
-
             const computerSelection = computerPlay(compTurn);
-            //console.log(computerSelection);
 
-            //playRound(playerSelection, computerSelection);
-            //console.log(roundMessage)
+            // playgame
             const playGame = () => {
                 for(let i = 1; i <= 5; i++){
-                    
-                    promptInput(playerSelection);
-                    playRound(playerSelection, computerSelection);
+                    do{
+                        promptInput(playerSelection);
+                        //computerPlay(compTurn);
+                        playRound(playerSelection, computerSelection);
 
-                    console.log('Computer picked ' + computerSelection);
-                    console.log('You picked ' + playerSelection);
-                    console.log('Computer score is ' + computerScore);
-                    console.log('Your score is ' + playerScore);
-                    console.log('Game round is ' + gameRound);
-                    console.log(roundMessage);
-                    console.log('***********');
+                        console.log('Computer picked ' + computerSelection);
+                        console.log('You picked ' + playerSelection);
+                        console.log('Computer score is ' + computerScore);
+                        console.log('Your score is ' + playerScore);
+                        console.log('Game round is ' + gameRound);
+                        console.log(roundMessage);
+                        console.log('***********');
+                    }
+                    while(gameRound <= 5 && roundMessage == 'You chose ' + playerSelection + ' and the Computer chose ' + computerSelection + ' , Its a Draw!');
                 }
-                // if(score[playerScore] > score[computerScore]){
-                //     return 'You Won! ${score[playerscore]} - ${score[computer score]}';
-                // }else{
-                //     return 'You Lost! ${score[playerscore]} - ${score[computer score]}';
-                // }
             }
 
+            // prompt user for input
             const promptInput = () => {
-                let playerSelection = prompt('Please choose from Rock, Paper, and Scissors.').toLowerCase();
+                playerSelection = prompt('Please choose from Rock, Paper, and Scissors.').toLowerCase();
                 if(playerSelection == 'scissors' || playerSelection == 'paper' || playerSelection == 'rock'){
                     return playerSelection;
                 }else{
                     return promptInput = prompt('That is not a legal selection, please choose from Rock, Paper, or Scissors.');
                     
                 }
+
+                // do{
+                //     playerSelection = prompt('Please choose from Rock, Paper, and Scissors.').toLowerCase()
+                //     return playerSelection;
+                // }
+                // while(playerSelection != 'scissors' || playerSelection != 'paper' || playerSelection != 'rock');
             }
 
-            const playRound = (playerSelection, computerSelection) => {
+            // single round play
+            const playRound = () => {
                 switch(playerSelection + computerSelection){
                     case 'scissorspaper':
                     case 'rockscissors':
