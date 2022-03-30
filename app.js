@@ -30,25 +30,22 @@ let playerSelection = '';
                         console.log(roundMessage);
                         console.log('***********');
                     }
-                    while(gameRound <= 5 && roundMessage == 'You chose ' + playerSelection + ' and the Computer chose ' + computerSelection + ' , Its a Draw!');
+                    while(gameRound == 4);
                 }
             }
 
             // prompt user for input
             const promptInput = () => {
-                playerSelection = prompt('Please choose from Rock, Paper, and Scissors.').toLowerCase();
-                if(playerSelection == 'scissors' || playerSelection == 'paper' || playerSelection == 'rock'){
-                    return playerSelection;
-                }else{
-                    return promptInput = prompt('That is not a legal selection, please choose from Rock, Paper, or Scissors.');
-                    
+                do{
+                    playerSelection = prompt('Please choose from Rock, Paper, and Scissors.').toLowerCase();
+                    if(playerSelection == 'scissors' || playerSelection == 'paper' || playerSelection == 'rock'){
+                        return playerSelection;
+                    }else{
+                        playerSelection = prompt('That is not a legal selection, please choose from Rock, Paper, or Scissors.');
+                        return playerSelection;
+                    }
                 }
-
-                // do{
-                //     playerSelection = prompt('Please choose from Rock, Paper, and Scissors.').toLowerCase()
-                //     return playerSelection;
-                // }
-                // while(playerSelection != 'scissors' || playerSelection != 'paper' || playerSelection != 'rock');
+                while(playerSelection == 'scissors' || playerSelection == 'paper' || playerSelection == 'rock');
             }
 
             // single round play
