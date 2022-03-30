@@ -16,21 +16,18 @@ let playerSelection = '';
 
             // playgame
             const playGame = () => {
-                for(let i = 1; i <= 5; i++){
-                    do{
-                        promptInput(playerSelection);
-                        //computerPlay(compTurn);
-                        playRound(playerSelection, computerSelection);
+                for(let i = 1; gameRound <= 4; i++){
+                    promptInput(playerSelection);
+                    //computerPlay(compTurn);
+                    playRound(playerSelection, computerSelection);
 
-                        console.log('Computer picked ' + computerSelection);
-                        console.log('You picked ' + playerSelection);
-                        console.log('Computer score is ' + computerScore);
-                        console.log('Your score is ' + playerScore);
-                        console.log('Game round is ' + gameRound);
-                        console.log(roundMessage);
-                        console.log('***********');
-                    }
-                    while(gameRound == 4);
+                    console.log('Computer picked ' + computerSelection);
+                    console.log('You picked ' + playerSelection);
+                    console.log('Computer score is ' + computerScore);
+                    console.log('Your score is ' + playerScore);
+                    console.log('Game round is ' + gameRound);
+                    console.log(roundMessage);
+                    console.log('***********');
                 }
             }
 
