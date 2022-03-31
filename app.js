@@ -3,23 +3,15 @@ let roundMessage = '';
 let playerScore = 0;
 let computerScore = 0;
 let gameRound = 0;
-//let playerSelection = prompt('Please choose from Rock, Paper, and Scissors.').toLowerCase();
 let playerSelection = '';
-
-    const compTurn = ['rock', 'paper', 'scissors'];
-
-            // Computer play
-            const computerPlay = (compTurn) => {
-                return compTurn[Math.floor(Math.random() * compTurn.length)];
-            }
-            const computerSelection = computerPlay(compTurn);
+// Computer play
+const compTurn = ['rock', 'paper', 'scissors'];
+const computerSelection = compTurn[Math.floor(Math.random() * compTurn.length)];
 
             // playgame
             const playGame = () => {
-                for(let i = 1; gameRound <= 4; i++){
-                    promptInput(playerSelection);
-                    //computerPlay(compTurn);
-                    playRound(playerSelection, computerSelection);
+                do{
+                    playRound();
 
                     console.log('Computer picked ' + computerSelection);
                     console.log('You picked ' + playerSelection);
@@ -29,6 +21,7 @@ let playerSelection = '';
                     console.log(roundMessage);
                     console.log('***********');
                 }
+                while(gameRound <= 4);
             }
 
             // prompt user for input
@@ -47,6 +40,7 @@ let playerSelection = '';
 
             // single round play
             const playRound = () => {
+                promptInput();
                 switch(playerSelection + computerSelection){
                     case 'scissorspaper':
                     case 'rockscissors':
