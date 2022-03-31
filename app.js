@@ -4,15 +4,21 @@ let playerScore = 0;
 let computerScore = 0;
 let gameRound = 0;
 let playerSelection = '';
+
 // Computer play
 const compTurn = ['rock', 'paper', 'scissors'];
-const computerSelection = compTurn[Math.floor(Math.random() * compTurn.length)];
+let computerSelection = '';
 
+const generateComputerSelection = () => {
+    const randomCompTurn = compTurn[Math.floor(Math.random() * compTurn.length)];
+    computerSelection = randomCompTurn;
+}
             // playgame
             const playGame = () => {
                 do{
                     playRound();
-
+                    
+                    //for my own testing
                     console.log('Computer picked ' + computerSelection);
                     console.log('You picked ' + playerSelection);
                     console.log('Computer score is ' + computerScore);
@@ -22,6 +28,12 @@ const computerSelection = compTurn[Math.floor(Math.random() * compTurn.length)];
                     console.log('***********');
                 }
                 while(gameRound <= 4);
+
+                if(playerScore > computerScore){
+                    console.log('You Won!, You scored ' + playerScore +' and computer scored ' + computerScore);
+                }else{
+                    console.log('You Lost!, You scored ' + playerScore +' and computer scored ' + computerScore);
+                }
             }
 
             // prompt user for input
@@ -40,7 +52,10 @@ const computerSelection = compTurn[Math.floor(Math.random() * compTurn.length)];
 
             // single round play
             const playRound = () => {
+
                 promptInput();
+                generateComputerSelection();
+
                 switch(playerSelection + computerSelection){
                     case 'scissorspaper':
                     case 'rockscissors':
