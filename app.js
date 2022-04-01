@@ -41,13 +41,12 @@ const generateComputerSelection = () => {
                 do{
                     playerSelection = prompt('Please choose from Rock, Paper, and Scissors.').toLowerCase();
                     if(playerSelection == 'scissors' || playerSelection == 'paper' || playerSelection == 'rock'){
-                        return playerSelection;
+                        break;
                     }else{
-                        playerSelection = prompt('That is not a legal selection, please choose from Rock, Paper, or Scissors.');
-                        return playerSelection;
+                        playerSelection = prompt('That is not a legal selection, please choose from Rock, Paper, or Scissors.').toLowerCase();
                     }
                 }
-                while(playerSelection == 'scissors' || playerSelection == 'paper' || playerSelection == 'rock');
+                while(playerSelection != 'scissors' || playerSelection != 'paper' || playerSelection != 'rock');
             }
 
             // single round play
