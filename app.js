@@ -1,9 +1,9 @@
 const game = () => {
-let roundMessage = '';
+let roundMessage;
 let playerScore = 0;
 let computerScore = 0;
 let gameRound = 0;
-let playerSelection = '';
+let playerSelection;
 
 // Computer play
 const compTurn = ['rock', 'paper', 'scissors'];
@@ -30,9 +30,9 @@ const generateComputerSelection = () => {
                 while(gameRound <= 4);
 
                 if(playerScore > computerScore){
-                    console.log('You Won!, You scored ' + playerScore +' and computer scored ' + computerScore);
+                    console.log(`You Won! You scored ${playerScore} and the Computer scored ${computerScore}`);
                 }else{
-                    console.log('You Lost!, You scored ' + playerScore +' and computer scored ' + computerScore);
+                    console.log(`You Lost! You scrored ${playerScore} and the Computer scored ${computerScore}`);
                 }
             }
 
@@ -43,7 +43,10 @@ const generateComputerSelection = () => {
                     if(playerSelection == 'scissors' || playerSelection == 'paper' || playerSelection == 'rock'){
                         break;
                     }else{
-                        playerSelection = prompt('That is not a legal selection, please choose from Rock, Paper, or Scissors.').toLowerCase();
+                    playerSelection = prompt('That is not a legal selection, please choose from Rock, Paper, or Scissors.').toLowerCase();
+                        if(playerSelection == 'scissors' || playerSelection == 'paper' || playerSelection == 'rock'){
+                            break;
+                        }
                     }
                 }
                 while(playerSelection != 'scissors' || playerSelection != 'paper' || playerSelection != 'rock');
@@ -59,21 +62,21 @@ const generateComputerSelection = () => {
                     case 'scissorspaper':
                     case 'rockscissors':
                     case 'paperrock':
-                        roundMessage = 'You chose ' + playerSelection + ' and the Computer chose ' + computerSelection + ' , You Win!';
+                        roundMessage = `You chose ${playerSelection} and the Computer chose ${computerSelection}, You WIN!`;
                         playerScore++;
                         gameRound++;
                         break;
                     case 'paperscissors':
                     case 'scissorsrock':
                     case 'rockpaper':
-                        roundMessage = 'You chose ' + playerSelection + ' and the Computer chose ' + computerSelection + ' , You Lose!';
+                        roundMessage = `You chose ${playerSelection} and the Computer chose ${computerSelection}, You Lose!`;
                         computerScore++;
                         gameRound++;
                         break;
                     case 'paperpaper':
                     case 'rockrock':
                     case 'scissorsscissors':
-                        roundMessage = 'You chose ' + playerSelection + ' and the Computer chose ' + computerSelection + ' , Its a Draw!';
+                        roundMessage = `You chose ${playerSelection} and the Computer chose ${computerSelection}, It\'s a Draw!`;
                         break;
                 }
             }
