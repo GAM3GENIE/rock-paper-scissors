@@ -1,88 +1,71 @@
 const game = () => {
-let roundMessage;
 let playerScore = 0;
 let computerScore = 0;
 let gameRound = 0;
-let playerSelection;
-
-// Computer play
+const resultsDisplay = document.querySelector('#results');
+const selectionDisplay = document.querySelector('#selections');
+const endGameDisplay = document.querySelector('#endgame');
 const compTurn = ['rock', 'paper', 'scissors'];
-let computerSelection = '';
 
-const generateComputerSelection = () => {
-    const randomCompTurn = compTurn[Math.floor(Math.random() * compTurn.length)];
-    computerSelection = randomCompTurn;
-}
-            // playgame
-            const playGame = () => {
-                do{
-                    playRound();
-                    
-                    //for my own testing
-                    console.log('Computer picked ' + computerSelection);
-                    console.log('You picked ' + playerSelection);
-                    console.log('Computer score is ' + computerScore);
-                    console.log('Your score is ' + playerScore);
-                    console.log('Game round is ' + gameRound);
-                    console.log(roundMessage);
-                    console.log('***********');
-                }
-                while(gameRound <= 4);
 
-                if(playerScore > computerScore){
-                    console.log(`You Won! You scored ${playerScore} and the Computer scored ${computerScore}`);
-                }else{
-                    console.log(`You Lost! You scrored ${playerScore} and the Computer scored ${computerScore}`);
-                }
+    const playGame = (e) => {
+        playRound(e.target.innerText, compTurn[Math.floor(Math.random() * compTurn.length)]);
+        if(gameRound === 5){
+            if(playerScore > computerScore){
+                endGameDisplay.innerText = `You Won! You scored ${playerScore} and the Computer scored ${computerScore}`;
+            }else{
+                endGameDisplay.innerText = `You Lost! You scrored ${playerScore} and the Computer scored ${computerScore}`;
             }
+            reset();
+        }
+    }
 
-            // prompt user for input
-            const promptInput = () => {
-                do{
-                    playerSelection = prompt('Please choose from Rock, Paper, and Scissors.').toLowerCase();
-                    if(playerSelection == 'scissors' || playerSelection == 'paper' || playerSelection == 'rock'){
-                        break;
-                    }else{
-                    playerSelection = prompt('That is not a legal selection, please choose from Rock, Paper, or Scissors.').toLowerCase();
-                        if(playerSelection == 'scissors' || playerSelection == 'paper' || playerSelection == 'rock'){
-                            break;
-                        }
-                    }
-                }
-                while(playerSelection != 'scissors' || playerSelection != 'paper' || playerSelection != 'rock');
-            }
-
-            // single round play
-            const playRound = () => {
-
-                promptInput();
-                generateComputerSelection();
-
-                switch(playerSelection + computerSelection){
-                    case 'scissorspaper':
-                    case 'rockscissors':
-                    case 'paperrock':
-                        roundMessage = `You chose ${playerSelection} and the Computer chose ${computerSelection}, You WIN!`;
-                        playerScore++;
-                        gameRound++;
-                        break;
-                    case 'paperscissors':
-                    case 'scissorsrock':
-                    case 'rockpaper':
-                        roundMessage = `You chose ${playerSelection} and the Computer chose ${computerSelection}, You Lose!`;
-                        computerScore++;
-                        gameRound++;
-                        break;
-                    case 'paperpaper':
-                    case 'rockrock':
-                    case 'scissorsscissors':
-                        roundMessage = `You chose ${playerSelection} and the Computer chose ${computerSelection}, It\'s a Draw!`;
-                        break;
-                }
-            }
+    compTurn.forEach(compTurn => {
+        const button = document.createElement('button')
+        button.innerHTML = compTurn
+        button.addEventListener('click', playGame)
+        selectionDisplay.appendChild(button)
+    });
             
-            // Calling the playGame fucntion
-            playGame();
+    // single round play
+    const playRound = (playerSelection, computerSelection) => {
+        switch(playerSelection + computerSelection){
+            case 'scissorspaper':
+            case 'rockscissors':
+            case 'paperrock':
+                resultsDisplay.innerText = `You chose ${playerSelection} and the Computer chose ${computerSelection}, You WIN!`;
+                playerScore++;
+                gameRound++;
+                console.log('Computer score is ' + computerScore);
+                console.log('Your score is ' + playerScore);
+                console.log('Game round is ' + gameRound);
+                break;
+            case 'paperscissors':
+            case 'scissorsrock':
+            case 'rockpaper':
+                resultsDisplay.innerText = `You chose ${playerSelection} and the Computer chose ${computerSelection}, You Lose!`;
+                computerScore++;
+                gameRound++;
+                console.log('Computer score is ' + computerScore);
+                console.log('Your score is ' + playerScore);
+                console.log('Game round is ' + gameRound);
+                break;
+            case 'paperpaper':
+            case 'rockrock':
+            case 'scissorsscissors':
+                resultsDisplay.innerText = `You chose ${playerSelection} and the Computer chose ${computerSelection}, It\'s a Draw!`;
+                console.log('Computer score is ' + computerScore);
+                console.log('Your score is ' + playerScore);
+                console.log('Game round is ' + gameRound);
+                break;
+        }
+    }
+
+    const reset = () => {
+        gameRound = 0;
+        playerScore = 0;
+        computerScore = 0;   
+    }
 
 }
 
