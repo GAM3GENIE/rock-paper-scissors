@@ -5,6 +5,7 @@ let gameRound = 0;
 const resultsDisplay = document.querySelector('#results');
 const selectionDisplay = document.querySelector('#selections');
 const endGameDisplay = document.querySelector('#endgame');
+const reloadBtn = document.querySelector('#reload');
 const compTurn = ['rock', 'paper', 'scissors'];
 
 
@@ -16,10 +17,15 @@ const compTurn = ['rock', 'paper', 'scissors'];
             }else{
                 endGameDisplay.innerText = `You Lost! You scrored ${playerScore} and the Computer scored ${computerScore}. Better luck next time.`;
             }
+            reloadBtn.innerText = 'Restart';
+            reloadBtn.style.display = 'flex'
+            reloadBtn.addEventListener('click',() => {
+            window.location.reload();
             reset();
+            });
         }
     }
-
+    
     compTurn.forEach(compTurn => {
         const button = document.createElement('button')
         button.innerHTML = compTurn
@@ -33,7 +39,7 @@ const compTurn = ['rock', 'paper', 'scissors'];
             case 'scissorspaper':
             case 'rockscissors':
             case 'paperrock':
-                resultsDisplay.innerText = `You chose ${playerSelection} and the Computer chose ${computerSelection}, You WIN!`;
+                resultsDisplay.innerText = `You chose ${playerSelection} and the Computer chose ${computerSelection}, You Won the round!`;
                 playerScore++;
                 gameRound++;
                 console.log('Computer score is ' + computerScore);
@@ -43,7 +49,7 @@ const compTurn = ['rock', 'paper', 'scissors'];
             case 'paperscissors':
             case 'scissorsrock':
             case 'rockpaper':
-                resultsDisplay.innerText = `You chose ${playerSelection} and the Computer chose ${computerSelection}, You Lose!`;
+                resultsDisplay.innerText = `You chose ${playerSelection} and the Computer chose ${computerSelection}, You Lost the round!`;
                 computerScore++;
                 gameRound++;
                 console.log('Computer score is ' + computerScore);
@@ -64,7 +70,7 @@ const compTurn = ['rock', 'paper', 'scissors'];
     const reset = () => {
         gameRound = 0;
         playerScore = 0;
-        computerScore = 0;   
+        computerScore = 0;
     }
 
 }
