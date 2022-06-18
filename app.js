@@ -12,9 +12,9 @@ const compTurn = ['rock', 'paper', 'scissors'];
         playRound(e.target.innerText, compTurn[Math.floor(Math.random() * compTurn.length)]);
         if(gameRound === 5){
             if(playerScore > computerScore){
-                endGameDisplay.innerText = `You Won! You scored ${playerScore} and the Computer scored ${computerScore}`;
+                endGameDisplay.innerText = `You Won! You scored ${playerScore} and the Computer scored ${computerScore}. You're Good!`;
             }else{
-                endGameDisplay.innerText = `You Lost! You scrored ${playerScore} and the Computer scored ${computerScore}`;
+                endGameDisplay.innerText = `You Lost! You scrored ${playerScore} and the Computer scored ${computerScore}. Better luck next time.`;
             }
             reset();
         }
