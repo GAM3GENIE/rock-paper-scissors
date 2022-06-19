@@ -6,6 +6,9 @@ const resultsDisplay = document.querySelector('#results');
 const selectionDisplay = document.querySelector('#selections');
 const endGameDisplay = document.querySelector('#endgame');
 const reloadBtn = document.querySelector('#reload');
+const compScoreDisplay = document.querySelector('#compscore');
+const playerScoreDisplay = document.querySelector('#playerscore');
+const gameRoundDisplay = document.querySelector('#gameround');
 const compTurn = ['rock', 'paper', 'scissors'];
 
 
@@ -42,9 +45,9 @@ const compTurn = ['rock', 'paper', 'scissors'];
                 resultsDisplay.innerText = `You chose ${playerSelection} and the Computer chose ${computerSelection}, You Won the round!`;
                 playerScore++;
                 gameRound++;
-                console.log('Computer score is ' + computerScore);
-                console.log('Your score is ' + playerScore);
-                console.log('Game round is ' + gameRound);
+                compScoreDisplay.innerText = `Computer Score: ${computerScore}`;
+                playerScoreDisplay.innerText = `Player Score: ${playerScore}`;
+                gameRoundDisplay.innerText = `Game Round: ${gameRound}`;
                 break;
             case 'paperscissors':
             case 'scissorsrock':
@@ -52,17 +55,17 @@ const compTurn = ['rock', 'paper', 'scissors'];
                 resultsDisplay.innerText = `You chose ${playerSelection} and the Computer chose ${computerSelection}, You Lost the round!`;
                 computerScore++;
                 gameRound++;
-                console.log('Computer score is ' + computerScore);
-                console.log('Your score is ' + playerScore);
-                console.log('Game round is ' + gameRound);
+                compScoreDisplay.innerText = `Computer Score: ${computerScore}`;
+                playerScoreDisplay.innerText = `Player Score: ${playerScore}`;
+                gameRoundDisplay.innerText = `Game Round: ${gameRound}`;
                 break;
             case 'paperpaper':
             case 'rockrock':
             case 'scissorsscissors':
                 resultsDisplay.innerText = `You chose ${playerSelection} and the Computer chose ${computerSelection}, It\'s a Draw!`;
-                console.log('Computer score is ' + computerScore);
-                console.log('Your score is ' + playerScore);
-                console.log('Game round is ' + gameRound);
+                compScoreDisplay.innerText = `Computer Score: ${computerScore}`;
+                playerScoreDisplay.innerText = `Player Score: ${playerScore}`;
+                gameRoundDisplay.innerText = `Game Round: ${gameRound}`;
                 break;
         }
     }
@@ -71,8 +74,7 @@ const compTurn = ['rock', 'paper', 'scissors'];
         gameRound = 0;
         playerScore = 0;
         computerScore = 0;
-    }
-
+    };
 }
 
 // Calling the game function

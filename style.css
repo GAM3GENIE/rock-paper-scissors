@@ -2,8 +2,36 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    background-color: aquamarine;
+    background-color: #3a8a9e;
     color: black;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    font-size: 1.25rem;
+    z-index: 2;
+    text-align: center;
+    width: 100%;
+    padding: 50px;
+    transition: 0.8s;
+}
+
+.slides{  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 2px gray;
+    width: 150px;
+    height: auto;
+    margin: 5em 10em;
+}
+
+.slides img{
+    border: 1px solid black;
+    max-width: 100%;
+    height: auto;
+    margin: 10px;
 }
 
 .game{
@@ -15,25 +43,18 @@
     align-items: center;
 }
 
-h1{
-    top: 0;
-    font-size: 4rem;
-    z-index: 2;
-    text-align: center;
-}
-
 h2{
-    font-size: 2.5rem;
+    font-size: 1.25rem;
 }
 
 #results{
     margin-top: 20px;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
 }
 
 #endgame{
     margin-top: 20px;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
 }
 
 div{
@@ -44,25 +65,55 @@ div{
 }
 
 div button{
-    padding: 0.8rem;
-    width: 100px;
-    border-radius: 10px;
-    background: red;
-    outline: none;
-    border-color: black;
-    border: none;
-    cursor: pointer;
+    box-shadow: 3px 4px 0px 0px #899599;
+	background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+	background-color:#ededed;
+	border-radius:15px;
+	border:1px solid #d6bcd6;
+	display:inline-block;
+	cursor:pointer;
+	color:#3a8a9e;
+	font-family:Arial;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+}
+
+div button:hover{
+    background:linear-gradient(to bottom, #bab1ba 5%, #ededed 100%);
+	background-color:#bab1ba;
+}
+
+div button:active{
+    position:relative;
+	top:1px;
 }
 
 #reload{
-    display: none;
-    margin-top: 2rem;
-    padding: 1rem;
-    background: white;
-    outline: none;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
+    box-shadow: 3px 4px 0px 0px #8a2a21;
+	background:linear-gradient(to bottom, #c62d1f 5%, #f24437 100%);
+	background-color:#c62d1f;
+	border-radius:18px;
+	border:1px solid #d02718;
+	display: none;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #810e05;
+}
+
+#reload:hover{
+    background:linear-gradient(to bottom, #f24437 5%, #c62d1f 100%);
+	background-color:#f24437;
+}
+
+#reload:active{
+    position:relative;
+	top:1px;
 }
 
 
@@ -71,15 +122,19 @@ div button{
 /* Responsive Design */
 @media screen and (max-width: 612px)
 { 
-    .title{
+    header{
         text-align: center;
     }
-    .score{
+    #results{
         position: absolute;
         top: 200px;
         width: 100vw;
     }
-    .options{
+    #selections{
         width: 100vw;
     }
+    img {
+        width: 100%;
+      }
 }
+
